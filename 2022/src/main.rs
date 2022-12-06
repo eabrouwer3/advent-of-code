@@ -11,7 +11,7 @@ fn day1() {
     println!("Day 1");
     let data = include_str!("../data/day1.txt");
 
-    let rows = data.split("\n");
+    let rows = data.lines();
     let mut first = 0;
     let mut second = 0;
     let mut third = 0;
@@ -55,7 +55,7 @@ fn day2() {
         ("C Z", 6),
     ]);
 
-    let rows = data.split("\n").filter(|row| row != &"");
+    let rows = data.lines().filter(|row| row != &"");
     let mut total = 0;
     for row in rows {
         total += score_map[row];
@@ -76,7 +76,7 @@ fn day2() {
         ("C Z", "C X"),
     ]);
 
-    let rows = data.split("\n").filter(|row| row != &"");
+    let rows = data.lines().filter(|row| row != &"");
     let mut total = 0;
     for row in rows {
         total += score_map[play_map[row]];
@@ -90,7 +90,7 @@ fn day3() {
     let data = include_str!("../data/day3.txt");
     let letters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
-    let rows = data.split("\n").filter(|row| row != &"");
+    let rows = data.lines().filter(|row| row != &"");
     let mut total: usize = 0;
     for row in rows {
         let (first_half, second_half) = row.split_at(row.len() / 2);
@@ -103,10 +103,7 @@ fn day3() {
     }
     println!("Part 1: {}", total);
 
-    let rows = data
-        .split("\n")
-        .filter(|row| row != &"")
-        .collect::<Vec<&str>>();
+    let rows = data.lines().filter(|row| row != &"").collect::<Vec<&str>>();
     let chunks = rows.chunks(3);
     let mut total: usize = 0;
     for chunk in chunks {
@@ -124,27 +121,31 @@ fn day4() {
     println!("Day 4");
     let data = include_str!("../data/day4.txt");
 
-    let rows = data.split("\n").filter(|row| row != &"");
+    let rows = data.lines().filter(|row| row != &"");
     let mut fully_contained_count = 0;
     let mut partially_contained_count = 0;
     for row in rows {
-        let mut jobs = row.split(",");
-        let first = jobs.next().unwrap_or("0");
-        let second = jobs.next().unwrap_or("0");
-        let mut ab = first.split("-").map(|i| i.parse::<i32>());
-        let mut xy = second.split("-").map(|i| i.parse::<i32>());
-        let a = ab.next().unwrap().unwrap_or(0);
-        let b = ab.next().unwrap().unwrap_or(0);
-        let x = xy.next().unwrap().unwrap_or(0);
-        let y = xy.next().unwrap().unwrap_or(0);
+        let jobs = row
+            .split([',', '-'])
+            .flat_map(|i| i.parse())
+            .collect::<Vec<i32>>();
+        let a = jobs[0];
+        let b = jobs[1];
+        let x = jobs[2];
+        let y = jobs[3];
 
-        if ((a..=b).contains(&x) && (a..=b).contains(&y)) || ((x..=y).contains(&a) && (x..=y).contains(&b)) {
+        if (a <= x && x <= b && a <= y && y <= b) || (x <= a && a <= y && x <= b && b <= y) {
             fully_contained_count += 1;
         }
-        if (a..=b).contains(&x) || (a..=b).contains(&y) || (x..=y).contains(&a) || (x..=y).contains(&b) {
+        if (a <= x && x <= b) || (a <= y && y <= b) || (x <= a && a <= y) || (x <= b && b <= y) {
             partially_contained_count += 1;
         }
     }
     println!("Part 1: {}", fully_contained_count);
     println!("Part 2: {}", partially_contained_count);
+}
+
+fn day5() {
+    println!("Day 5");
+    let data = include_str!("../data/day5.txt");
 }
