@@ -38,4 +38,10 @@ contract AdventOfCodeTest is Test {
     assertEq(advent.problem3A(problemInputs), 556367);
     assertEq(advent.problem3B(problemInputs), 89471771);
   }
+
+  function test_Problem4() public {
+    readInput('test/input-data/input4.txt');
+    assertEq(advent.problem4A(problemInputs, 10, 25), 21088);
+    assertEq(advent.problem4B(problemInputs, 10, 25), 6874754);
+  }
 }
