@@ -58,7 +58,7 @@ contract AdventOfCodeProblem5 is Utils {
     return output;
   }
 
-  function traverseMap(string[] memory inputs, uint sectionHeaderRow, uint startId, uint rangeLength) internal returns (uint) {
+  function traverseMap(string[] memory inputs, uint sectionHeaderRow, uint startId, uint rangeLength) internal pure returns (uint) {
     // console.log("startId: %d", startId);
 
     // If we're past the end of the map, return the startId (the smallest number)
@@ -146,7 +146,7 @@ contract AdventOfCodeProblem5 is Utils {
     return traverseMap(inputs, nextSectionHeaderRow, startId, rangeLength);
   }
 
-  function problem5B(string[] memory inputs) public returns (uint) {
+  function problem5B(string[] memory inputs) public pure returns (uint) {
     uint output = 9999999999999999;
 
     uint seedIndex = 6;
@@ -156,11 +156,11 @@ contract AdventOfCodeProblem5 is Utils {
       uint range;
       (curId, seedIndex) = getWholeNumber(bytes(inputs[0]), seedIndex + 1);
       (range, seedIndex) = getWholeNumber(bytes(inputs[0]), seedIndex + 1);
-      console.log("seed id: %d", curId);
-      console.log("range: %d", range);
+      // console.log("seed id: %d", curId);
+      // console.log("range: %d", range);
 
       uint smallestLocation = traverseMap(inputs, 2, curId, range);
-      console.log("smallestLocation: %d", smallestLocation);
+      // console.log("smallestLocation: %d", smallestLocation);
       if (smallestLocation < output) {
         output = smallestLocation;
       }

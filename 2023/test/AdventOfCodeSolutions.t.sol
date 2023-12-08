@@ -60,6 +60,6 @@ contract AdventOfCodeTest is Test {
   function test_Problem5() public {
     readInput('test/input-data/input5.txt');
     assertEq(advent.problem5A(problemInputs), 196167384);
-    assertEq(advent.problem5B(problemInputs), 0);
+    assertEq(advent.problem5B(problemInputs), 125742456);
   }
 }
