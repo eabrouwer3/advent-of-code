@@ -96,7 +96,6 @@ contract AdventOfCodeTest is Test {
         //         Card 4: 41 92 73 84 69 | 59 84 76 51 58  5 54 83
         //         Card 5: 87 83 26 28 32 | 88 30 70 12 93 22 82 36
         //         Card 6: 31 18 13 56 72 | 74 77 10 23 35 67 36 11
-        // output: 8 + 2 + 2 + 1 + 0 + 0 = 13
         string[] memory inputs = new string[](6);
         inputs[0] = "Card 1: 41 48 83 86 17 | 83 86  6 31 17  9 48 53";
         inputs[1] = "Card 2: 13 32 20 16 61 | 61 30 68 82 17 32 24 19";
@@ -104,7 +103,81 @@ contract AdventOfCodeTest is Test {
         inputs[3] = "Card 4: 41 92 73 84 69 | 59 84 76 51 58  5 54 83";
         inputs[4] = "Card 5: 87 83 26 28 32 | 88 30 70 12 93 22 82 36";
         inputs[5] = "Card 6: 31 18 13 56 72 | 74 77 10 23 35 67 36 11";
+        // output: 8 + 2 + 2 + 1 + 0 + 0 = 13
         assertEq(advent.problem4A(inputs, 5, 8), 13);
         assertEq(advent.problem4B(inputs, 5, 8), 30);
+    }
+
+    function test_Problem5() public {
+        // inputs: seeds: 79 14 55 13
+        //
+        //         seed-to-soil map:
+        //         50 98 2
+        //         52 50 48
+        //
+        //         soil-to-fertilizer map:
+        //         0 15 37
+        //         37 52 2
+        //         39 0 15
+        //
+        //         fertilizer-to-water map:
+        //         49 53 8
+        //         0 11 42
+        //         42 0 7
+        //         57 7 4
+        //
+        //         water-to-light map:
+        //         88 18 7
+        //         18 25 70
+        //
+        //         light-to-temperature map:
+        //         45 77 23
+        //         81 45 19
+        //         68 64 13
+        //
+        //         temperature-to-humidity map:
+        //         0 69 1
+        //         1 0 69
+        //
+        //         humidity-to-location map:
+        //         60 56 37
+        //         56 93 4
+        // output: 35
+        string[] memory inputs = new string[](33);
+        inputs[0] = "seeds: 79 14 55 13";
+        inputs[1] = "";
+        inputs[2] = "seed-to-soil map:";
+        inputs[3] = "50 98 2";
+        inputs[4] = "52 50 48";
+        inputs[5] = "";
+        inputs[6] = "soil-to-fertilizer map:";
+        inputs[7] = "0 15 37";
+        inputs[8] = "37 52 2";
+        inputs[9] = "39 0 15";
+        inputs[10] = "";
+        inputs[11] = "fertilizer-to-water map:";
+        inputs[12] = "49 53 8";
+        inputs[13] = "0 11 42";
+        inputs[14] = "42 0 7";
+        inputs[15] = "57 7 4";
+        inputs[16] = "";
+        inputs[17] = "water-to-light map:";
+        inputs[18] = "88 18 7";
+        inputs[19] = "18 25 70";
+        inputs[20] = "";
+        inputs[21] = "light-to-temperature map:";
+        inputs[22] = "45 77 23";
+        inputs[23] = "81 45 19";
+        inputs[24] = "68 64 13";
+        inputs[25] = "";
+        inputs[26] = "temperature-to-humidity map:";
+        inputs[27] = "0 69 1";
+        inputs[28] = "1 0 69";
+        inputs[29] = "";
+        inputs[30] = "humidity-to-location map:";
+        inputs[31] = "60 56 37";
+        inputs[32] = "56 93 4";
+        assertEq(advent.problem5A(inputs), 35);
+        assertEq(advent.problem5B(inputs), 46);
     }
 }

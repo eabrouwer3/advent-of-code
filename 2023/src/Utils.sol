@@ -6,6 +6,10 @@ contract Utils {
     return c >= 0x30 && c <= 0x39;
   }
 
+  function isLetter(bytes1 c) internal pure returns (bool) {
+    return (c >= 0x41 && c <= 0x5A) || (c >= 0x61 && c <= 0x7A);
+  }
+
   function byteToDigit(bytes1 c) internal pure returns (uint8) {
     require(isDigit(c), "Utils: byteToDigit: not a digit");
     return uint8(c) - 0x30;

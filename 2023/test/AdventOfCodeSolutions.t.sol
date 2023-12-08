@@ -14,11 +14,23 @@ contract AdventOfCodeTest is Test {
   }
 
   function readInput(string memory filename) internal {
-    string memory line = vm.readLine(filename);
-    do {
-      problemInputs.push(line);
-      line = vm.readLine(filename);
-    } while (bytes(line).length > 0);
+    bytes memory file = bytes(vm.readFile(filename));
+    uint i = 0;
+    while (i < file.length) {
+      uint j = i;
+      while (j < file.length && file[j] != 0x0A) {
+        j++;
+      }
+      bytes memory line = new bytes(j - i);
+      for (uint k = 0; k < j - i; k++) {
+        line[k] = file[i + k];
+      }
+      problemInputs.push(string(line));
+      i = j + 1;
+    }
+    if (bytes(problemInputs[problemInputs.length - 1]).length == 0) {
+      delete problemInputs[problemInputs.length - 1];
+    }
   }
 
   function test_Problem1() public {
@@ -43,5 +55,11 @@ contract AdventOfCodeTest is Test {
     readInput('test/input-data/input4.txt');
     assertEq(advent.problem4A(problemInputs, 10, 25), 21088);
     assertEq(advent.problem4B(problemInputs, 10, 25), 6874754);
+  }
+
+  function test_Problem5() public {
+    readInput('test/input-data/input5.txt');
+    assertEq(advent.problem5A(problemInputs), 196167384);
+    assertEq(advent.problem5B(problemInputs), 0);
   }
 }
