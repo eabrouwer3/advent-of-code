@@ -24,6 +24,34 @@ contract Utils {
     return (num, i);
   }
 
+  function getNextNumber(bytes memory input, uint i) internal pure returns (uint, uint) {
+    while (i < input.length && !isDigit(input[i])) {
+      i++;
+    }
+
+    uint num = 0;
+    while (i < input.length && isDigit(input[i])) {
+      num = num * 10 + byteToDigit(input[i]);
+      i++;
+    }
+    return (num, i);
+  }
+
+  function getFullNumberIgnoreSpaces(bytes memory input, uint i) internal pure returns (uint) {
+    uint num = 0;
+    while (i < input.length && !isDigit(input[i])) {
+      i++;
+    }
+
+    while (i < input.length) {
+      if (isDigit(input[i])) {
+        num = num * 10 + byteToDigit(input[i]);
+      }
+      i++;
+    }
+    return num;
+  }
+
   function numInArray(uint[] memory arr, uint num) internal pure returns (bool) {
     for (uint i = 0; i < arr.length; i++) {
       if (arr[i] == num) {

@@ -180,4 +180,15 @@ contract AdventOfCodeTest is Test {
         assertEq(advent.problem5A(inputs), 35);
         assertEq(advent.problem5B(inputs), 46);
     }
+
+    function test_Problem6() public {
+        // inputs: Time:      7  15   30
+        //         Distance:  9  40  200
+        string[] memory inputs = new string[](2);
+        inputs[0] = "Time:      7  15   30";
+        inputs[1] = "Distance:  9  40  200";
+        // output: 4 * 8 * 9 = 288
+        assertEq(advent.problem6A(inputs), 288);
+        assertEq(advent.problem6B(inputs), 71503);
+    }
 }

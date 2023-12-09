@@ -62,4 +62,11 @@ contract AdventOfCodeTest is Test {
     assertEq(advent.problem5A(problemInputs), 196167384);
     assertEq(advent.problem5B(problemInputs), 125742456);
   }
+
+  function test_Problem6() public {
+    readInput('test/input-data/input6.txt');
+    assertEq(advent.problem6A(problemInputs), 227850);
+    // Commented out cause it runs slow (Like 50 seconds)
+    // assertEq(advent.problem6B(problemInputs), 42948149);
+  }
 }
