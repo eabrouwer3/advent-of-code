@@ -191,4 +191,21 @@ contract AdventOfCodeTest is Test {
         assertEq(advent.problem6A(inputs), 288);
         assertEq(advent.problem6B(inputs), 71503);
     }
+
+    function test_Problem7() public {
+        // inputs: 32T3K 765
+        //         T55J5 684
+        //         KK677 28
+        //         KTJJT 220
+        //         QQQJA 483
+        string[] memory inputs = new string[](5);
+        inputs[0] = "32T3K 765";
+        inputs[1] = "T55J5 684";
+        inputs[2] = "KK677 28";
+        inputs[3] = "KTJJT 220";
+        inputs[4] = "QQQJA 483";
+        // output: (765 * 1) + (220 * 2) + (28 * 3) + (684 * 4) + (483 * 5) = 6440
+        assertEq(advent.problem7A(inputs), 6440);
+        assertEq(advent.problem7B(inputs), 0);
+    }
 }

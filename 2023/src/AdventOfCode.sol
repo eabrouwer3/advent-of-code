@@ -7,6 +7,7 @@ import {AdventOfCodeProblem3} from "./AdventOfCodeProblem3.sol";
 import {AdventOfCodeProblem4} from "./AdventOfCodeProblem4.sol";
 import {AdventOfCodeProblem5} from "./AdventOfCodeProblem5.sol";
 import {AdventOfCodeProblem6} from "./AdventOfCodeProblem6.sol";
+import {AdventOfCodeProblem7} from "./AdventOfCodeProblem7.sol";
 
 contract AdventOfCode is
     AdventOfCodeProblem1,
@@ -14,5 +15,6 @@ contract AdventOfCode is
     AdventOfCodeProblem3,
     AdventOfCodeProblem4,
     AdventOfCodeProblem5,
-    AdventOfCodeProblem6
+    AdventOfCodeProblem6,
+    AdventOfCodeProblem7
 {}

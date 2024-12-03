@@ -60,4 +60,20 @@ contract Utils {
     }
     return false;
   }
+
+  function sort(uint[] memory arr, bool reverse) internal pure {
+    for (uint i = 0; i < arr.length; i++) {
+      for (uint j = i + 1; j < arr.length; j++) {
+        if (reverse && arr[i] < arr[j]) {
+          uint temp = arr[i];
+          arr[i] = arr[j];
+          arr[j] = temp;
+        } else if (!reverse && arr[i] > arr[j]) {
+          uint temp = arr[i];
+          arr[i] = arr[j];
+          arr[j] = temp;
+        }
+      }
+    }
+  }
 }
